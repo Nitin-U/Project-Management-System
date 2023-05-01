@@ -1,0 +1,75 @@
+.welcome-body{
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), URL("/images/welcome.jpg");
+    background-size: cover;
+    /* filter: brightness(50%); */
+}  
+
+.welcome-paragraph{
+    text-align: center;
+}
+
+.welcome-icon-body{
+    color: aliceblue;
+}
+
+.how-section1{
+    margin-top:-15%;
+    padding: 10%;
+}
+.how-section1 h4{
+    color: black;
+    font-weight: bold;
+    font-size: 30px;
+}
+.how-section1 .subheading{
+    color: #B71C1C;
+    font-size: 20px;
+}
+.how-section1 .row
+{
+    margin-top: 10%;
+}
+.how-img 
+{
+    text-align: center;
+}
+.how-img img{
+    width: 50%;
+}
+
+.home-newsletter .single {
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2; 
+    }
+    
+    .home-newsletter .single h2 {
+    font-size: 22px;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 40px; 
+    }
+    
+    .home-newsletter .single .form-control {
+    height: 50px;
+    background: rgba(255, 255, 255, 0.6);
+    border-color: transparent;
+    border-radius: 20px 0 0 20px; 
+    }
+    
+    .home-newsletter .single .form-control:focus {
+    box-shadow: none;
+    border-color: #000; 
+    }
+        
+    .home-newsletter .single .btn {
+    min-height: 50px; 
+    border-radius: 0 20px 20px 0;
+    background: #000;
+    color: #fff;
+    }
+
