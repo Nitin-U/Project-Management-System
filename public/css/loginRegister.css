@@ -1,0 +1,19 @@
+.login,
+.image {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-image: url('https://bootstrapious.com/i/snippets/sn-page-split/bg.jpg');
+  background-size: cover;
+  background-position: center center;
+}
+.bg-image-register {
+  background-image: url('https://bootstrapious.com/ck_resources/img/austin-chan-ukzHlkoz1IE-unsplash(1).jpg');
+  background-size: cover;
+  background-position: center center;
+}
+
+.custom_forgetpasslink a{
+    color: #000;
+}

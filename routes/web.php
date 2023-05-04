@@ -15,8 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('homepage');
-});
+})->name('homepage');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('invites', [App\Http\Controllers\InvitationController::class, 'create'])->name('invites.invite');
+Route::get('invites.invite_email', [App\Http\Controllers\InvitationController::class, 'index'])->name('invites.invite_email');
+Route::post('invites', [App\Http\Controllers\InvitationController::class, 'store'])->name('invites.store');
