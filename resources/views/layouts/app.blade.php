@@ -24,7 +24,7 @@
     <div id="app">
         <nav class="navbar bg-light fixed-top">
             <div class="container-fluid mx-5">
-                <img src="images/logo.png" alt="" style="width: 35px">
+                <a href="{{ '/' }}"><img src="images/logo.png" alt="" style="width: 35px"></a>
 
                 <form class="d-flex align-items-center">
                     <div class="input-group">
@@ -39,7 +39,7 @@
 
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
-                    <img src="images/logo.png" alt="" style="width: 35px">
+                    <a href="{{ '/' }}"><img src="images/logo.png" alt="" style="width: 35px"></a>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
 

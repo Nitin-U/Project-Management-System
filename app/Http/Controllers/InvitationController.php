@@ -22,6 +22,7 @@ class InvitationController extends Controller
 
         $invitation = Invitation::create([
             'email' => $request->email,
+            'role' => $request->role,
             'token' => sha1(time().$request->email),
         ]);
 

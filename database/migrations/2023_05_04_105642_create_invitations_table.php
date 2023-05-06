@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('invitations', function (Blueprint $table) {
             $table->id();
             $table->string('email')->unique();
-            $table->string('token')->nullable();
+            $table->string('token', 255)->unique();
+            $table->string('role');
             $table->timestamp('invite_created_at')->nullable();
             $table->timestamp('invite_updated_at')->nullable();
             $table->timestamps();

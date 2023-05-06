@@ -27,7 +27,7 @@ class InvitationEmail extends Mailable
     public function build()
     {
         return $this->subject('You have been invited to join our team')
-                    ->view('emails.invitation', ['url' => url('/register', ['token' => $this->invitation->token])]);
+                    ->view('invites.invite_email', ['url' => url('/register', ['token' => $this->invitation->token])]);
     }
 
     /**

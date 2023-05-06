@@ -1,0 +1,20 @@
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.invitation {
+    margin-top: 50px;
+    padding: 50px;
+}
+
+.role-select option {
+    color: var(--bs-secondary);
+}
+
+
+.footer-dark{
+    margin-top: auto;
+}

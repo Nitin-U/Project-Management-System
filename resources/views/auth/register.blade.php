@@ -33,11 +33,12 @@
                                 <div class="form-group mb-3">
                                     <input id="email" type="email" placeholder="Your Email Address"
                                         class="p-2 form-control rounded-pill border-0 shadow-sm px-4 text-dark @error('email') is-invalid @enderror"
-                                        name="email" value="{{ old('email') }} " autocomplete="email">
+                                        name="email" value="{{ $invitations->sortByDesc('created_at')->first()->email }}" autocomplete="email"
+                                        readonly>
                                     @error('email')
-                                    <span class="ms-2 invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                        <span class="ms-2 invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
                                 <div class="form-group mb-3">
@@ -57,12 +58,15 @@
                                 </div>
 
                                 <div class="form-group mb-3">
-                                        <select class="form-select p-2 form-control rounded-pill border-0 shadow-sm px-4 text-dark" aria-label="Default select example">
-                                            <option selected>---</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                            </select>
+                                    <input id="role" type="text" placeholder="Your Role" autofocus=""
+                                        class="p-2 form-control rounded-pill border-0 shadow-sm px-4 @error('role') is-invalid @enderror"
+                                        name="role" value="{{ $invitations->sortByDesc('created_at')->first()->role }}" autocomplete="name"
+                                        readonly>
+                                    @error('role')
+                                        <span class="ms-2 invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
 
                                 <button type="submit"
