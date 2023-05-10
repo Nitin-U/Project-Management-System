@@ -84,9 +84,11 @@
                                 </div>
                             </li>
                         @endguest
+                        @auth
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About Us</a>
+                            <a class="nav-link" href="{{ route('teams.index') }}">Home</a>
                         </li>
+                        @endauth
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('invites.invite') }}">Invite</a>
                         </li>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('invites', [App\Http\Controllers\InvitationController::class, 'create'])->name('invites.invite');
 Route::get('invites.invite_email', [App\Http\Controllers\InvitationController::class, 'index'])->name('invites.invite_email');
 Route::post('invites', [App\Http\Controllers\InvitationController::class, 'store'])->name('invites.store');
+
+Route::resource('teams', TeamController::class);
