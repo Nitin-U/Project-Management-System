@@ -73,7 +73,7 @@
           <td style="width: 596px; vertical-align: top; padding-left: 0; padding-right: 0; padding-top: 15px; padding-bottom: 15px;" width="596">
 
             <!-- Your logo is here -->
-            <img style="width: 180px; max-width: 180px; height: 85px; max-height: 85px; text-align: center; color: #ffffff;" alt="Logo" src="images/logo.png" align="center" width="180" height="85">
+            <img style="width: 180px; max-width: 180px; height: 85px; max-height: 85px; text-align: center; color: #ffffff;" alt="Logo" src="https://raw.githubusercontent.com/bnitin6034/image/main/logo.png" align="center" width="180" height="85">
 
           </td>
         </tr>
@@ -82,7 +82,7 @@
     <!-- End container for logo -->
 
     <!-- Hero image -->
-    <img style="width: 600px; max-width: 600px; height: 350px; max-height: 350px; text-align: center;" alt="Hero image" src="images/mail.jpg" align="center">
+    <img style="width: 600px; max-width: 600px; height: 350px; max-height: 350px; text-align: center;" alt="Hero image" src="https://raw.githubusercontent.com/bnitin6034/image/main/mail.jpg" align="center">
     <!-- Hero image -->
 
     <!-- Start single column section -->
