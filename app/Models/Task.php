@@ -5,19 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Team extends Model
+class Task extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
 
-    public function users()
-
+    public function user()
     {
-        return $this->belongsToMany(User::class, 'team_member');
+        return $this->belongsTo(User::class);
     }
 
-    public function tasks()
+    public function team()
     {
-        return $this->hasMany(Task::class);
+        return $this->belongsTo(Team::class);
     }
 }
