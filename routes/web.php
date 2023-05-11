@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TaskAssignmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,5 @@ Route::get('invites.invite_email', [App\Http\Controllers\InvitationController::c
 Route::post('invites', [App\Http\Controllers\InvitationController::class, 'store'])->name('invites.store');
 
 Route::resource('teams', TeamController::class);
+
+Route::resource('tasks', TaskAssignmentController::class);

@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 <style>
-    span,.bi-card-list,.bi-person-check,.bi-people{
+    span,.bi-card-list,.bi-person-check,.bi-people,.bi-list-check{
         color: white;
     }
 
@@ -38,8 +38,14 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-0 align-middle">
-                        <i class="fs-4 bi bi-card-list"></i></i> <span class="ms-1 d-none d-sm-inline">Assign Tasks</span></a>
+                        <a href="{{ route('tasks.create') }}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi bi-card-list"></i></i> <span class="ms-1 d-none d-sm-inline">Assign
+                                Tasks</span></a>
+                    </li>
+                    <li>
+                        <a href="{{ route('tasks.index') }}" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi bi-list-check"></i> <span class="ms-1 d-none d-sm-inline">All
+                                Tasks</span></a>
                     </li>
                 </ul>
                 <hr>
