@@ -19,4 +19,9 @@ class Task extends Model
     {
         return $this->belongsTo(Team::class);
     }
+
+    public function resources()
+    {
+        return $this->belongsToMany(Resource::class, 'task_resource');
+    }
 }
