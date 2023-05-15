@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TaskAssignmentController;
+use App\Http\Controllers\ResourceAllocation;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,5 @@ Route::post('invites', [App\Http\Controllers\InvitationController::class, 'store
 Route::resource('teams', TeamController::class);
 
 Route::resource('tasks', TaskAssignmentController::class);
+
+Route::resource('resources', ResourceAllocation::class);
