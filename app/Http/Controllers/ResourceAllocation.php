@@ -27,7 +27,8 @@ class ResourceAllocation extends Controller
      */
     public function create()
     {
-        //
+        $teams = Team::all();
+        return view('resources.create', compact('teams'));
     }
 
     /**
@@ -38,7 +39,42 @@ class ResourceAllocation extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->has('search_task')) {
+            $request->validate([
+                'team_id' => 'required',
+            ]);
+            
+            $teamTasks = Task::where('team_id', $request->team_id)->get();
+            $resources = Resource::all();
+            
+            $teams = Team::all();
+            
+            return view('resources.create', compact('teams', 'teamTasks', 'resources'));
+        }
+        
+        if ($request->has('submit')) { // Check if the form is submitted
+            $request->validate([
+                'team_id' => 'required',
+                'task_id' => 'required',
+                'resource_id' => 'required',
+            ], [
+                'team_id.required' => 'Please select a team.',
+                'task_id.required' => 'Please select a task.',
+                'resource_id.required' => 'Please select a resource.',
+            ]);
+            
+            // Handle form submission and redirect if validation fails
+            // ...
+        }
+        $task = Task::find($request->input('task_id'));
+        $resource = Resource::find($request->input('resource_id'));
+        
+        // Create task-resource relationship in the database
+        $task->resources()->attach($resource);
+        //dd($task);
+        
+        return redirect()->route('resources.create')->with('success', 'Resource allocation saved successfully.');
+
     }
 
     /**
