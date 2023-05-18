@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Team;
 use App\Models\User;
 use App\Models\Task;
+use Illuminate\Support\Facades\Gate;
 
 class TaskAssignmentController extends Controller
 {
@@ -16,15 +17,19 @@ class TaskAssignmentController extends Controller
      */
     public function index()
     {
-        return view('tasks.index', [
-            'teams' => Team::all(),
-            'users' => User::all(),
-            'tasks' => Task::all()
-        ]);
-        // $users = User::all();
-        // $teams = Team::all(); 
-        // $tasks = Task::all();  
-        // return view('tasks.index', compact('users','teams','tasks'));
+        if (Gate::allows('isPM')) {
+            // If the user is a project manager, retrieve all teams and tasks
+            $teams = Team::all();
+            $users = User::all();
+            $tasks = Task::all();
+        } else {
+            // If the user is not a project manager, retrieve their assigned teams and tasks
+            $user = auth()->user();
+            $teams = $user->teams;
+            $users = collect([$user]);
+            $tasks = $user->tasks;
+        }
+        return view('tasks.index', compact('teams', 'users', 'tasks'));
     }
 
     /**
@@ -34,6 +39,8 @@ class TaskAssignmentController extends Controller
      */
     public function create()
     {
+        $this->authorize('isPM');
+
         $teams = Team::all();
         $users = User::all();
         $tasks = Task::all();
@@ -83,10 +90,25 @@ class TaskAssignmentController extends Controller
      */
     public function show($id)
     {
-        $team = Team::findOrFail($id);
-        $teamMembers = User::whereHas('teams', function($query) use ($id) {
-            $query->where('team_id', $id);
-        })->get();
+        $team = Team::find($id);
+
+        if (!$team) {
+            return redirect()->route('tasks.index')->with('error', 'Invalid team ID.');
+        }
+
+        if (Gate::allows('isPM')) {
+            $teamMembers = User::whereHas('teams', function ($query) use ($id) {
+                $query->where('team_id', $id);
+            })->get();
+        } else {
+            $isTeamMember = $team->users()->where('users.id', auth()->id())->exists();
+
+            if (!$isTeamMember) {
+                return redirect()->route('tasks.index')->with('error', 'You are not authorized to view this team\'s tasks.');
+            }
+
+            $teamMembers = User::where('id', auth()->id())->get();
+        }
 
         return view('tasks.show', compact('team', 'teamMembers'));
     }
