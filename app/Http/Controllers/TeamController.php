@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Team;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 
 class TeamController extends Controller
 {
@@ -15,9 +16,15 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        $teams = Team::all();   
-        return view('teams.index', compact('users','teams'));
+        $teams = Team::all();
+        if (Gate::allows('isPM')) {
+            // If the user is a project manager, retrieve all teams
+            $teams = Team::all();
+        } else {
+            // If the user is not a project manager, retrieve their assigned teams
+            $teams = auth()->user()->teams;
+        }  
+        return view('teams.index', compact('teams'));
     }
 
     /**
@@ -27,6 +34,8 @@ class TeamController extends Controller
      */
     public function create()
     {
+        $this->authorize('isPM');
+
         $users = User::all();
         $teams = Team::all();
         return view('teams.create', compact('users','teams'));
