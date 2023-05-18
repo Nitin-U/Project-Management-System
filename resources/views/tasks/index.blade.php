@@ -67,7 +67,8 @@ span,
 .bi-card-list,
 .bi-person-check,
 .bi-people,
-.bi-list-check {
+.bi-list-check,
+.bi-gear-wide-connected {
     color: white;
 }
 </style>
@@ -98,13 +99,17 @@ span,
                         <i class="fs-4 bi bi-list-check"></i> <span class="ms-1 d-none d-sm-inline">All
                                 Tasks</span></a>
                     </li>
+                    <li>
+                        <a href="{{ route('resources.create') }}" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi bi-gear-wide-connected"></i> <span class="ms-1 d-none d-sm-inline">Assign Resources</span></a>
+                    </li>
                 </ul>
                 <hr>
             </div>
         </div>
         <div class="col">
             <!-- <h3>Left Sidebar with Submenus</h3> -->
-            <div class="container">
+            <!-- <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="card">
@@ -122,7 +127,35 @@ span,
                         </div>
                     </div>
                 </div>
+            </div> -->
+            <div class="col">
+            <!-- <h3>Left Sidebar with Submenus</h3> -->
+            <div class="row row-cols-1 row-cols-md-3 g-4 m-2">
+                @foreach ($teams as $team)
+                <div class="col col-md-4">
+                    <div class="card h-100">
+                    <div class="position-relative">
+                        <img src="/images/team.jpg" class="card-img-top" alt="...">
+                        <h1 class="card-title position-absolute w-100 text-center" style="top: 50%; transform: translateY(-50%); color: white;">{{ $team->team_name }}</h1>
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text text-center"> <a href="{{ route('tasks.show', $team) }}" style="text-decoration:none"> Project Name: {{ $team->project_title }}</a></p>
+                        <!-- <p class="card-text text-center">Team Members: </p>
+                        <ul class="list-group list-group-flush" style="height: 100px; overflow-y: auto;">
+                            @foreach ($team->users as $user)
+                                <li class="list-group-item">{{ $user->name }} - {{ $user->email }}</li>
+                            @endforeach
+                        </ul> -->
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                    </div>
+                </div>
+                @endforeach
             </div>
+        </div>
         </div>
     </div>
 </div>  

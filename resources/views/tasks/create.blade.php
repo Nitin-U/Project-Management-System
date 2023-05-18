@@ -11,7 +11,8 @@ span,
 .bi-card-list,
 .bi-person-check,
 .bi-people,
-.bi-list-check {
+.bi-list-check,
+.bi-gear-wide-connected {
     color: white;
 }
 </style>
@@ -41,6 +42,10 @@ span,
                         <a href="{{ route('tasks.index') }}" class="nav-link px-0 align-middle">
                         <i class="fs-4 bi bi-list-check"></i> <span class="ms-1 d-none d-sm-inline">All
                                 Tasks</span></a>
+                    </li>
+                    <li>
+                        <a href="{{ route('resources.create') }}" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi bi-gear-wide-connected"></i> <span class="ms-1 d-none d-sm-inline">Assign Resources</span></a>
                     </li>
                 </ul>
                 <hr>
