@@ -27,6 +27,8 @@ class ResourceAllocation extends Controller
      */
     public function create()
     {
+        $this->authorize('isPM');
+
         $teams = Team::all();
         return view('resources.create', compact('teams'));
     }
