@@ -49,14 +49,21 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $team = Team::create([
             'team_name' => $request->input('team_name'),
             'project_title' => $request->input('project_title')
         ]);
 
         $team->users()->sync($request->input('users'));
+        //dd($team);
 
-        return redirect()->route('teams.index');
+        //Send Notification
+        $users = $team->users;
+        //dd($users);
+        
+        return redirect()->route('teamNotification',['users'=>$users->toArray(),'team'=>$team->toArray()]);
+        //return redirect()->route('teams.index');
     }
 
     /**
