@@ -48,4 +48,26 @@ class NotificationMgmtController extends Controller
         //return redirect()->back()->with('success','You are now friends');
     }
 
+    public function taskNotification(Request $request)
+    {
+        //dd($request);
+        $userName = $request['user'];
+        $task = $request['task'];
+        //dd($user);
+        
+        $user = User::where('name', $userName)->first(); // Fetch the user instance using the user's name
+        if (!$user) {
+            // Handle the case when the user is not found
+            return redirect()->route('tasks.index')->with('error', 'User not found.');
+        }
+        $details = [
+            'greeting' => 'Hi ' . $user->name . '!',
+            'body' => 'You have been assigned a task: ' .$task .'.' ,
+        ];
+        //dd($details['body']);
+        Notification::send($user, new TeamNotification($details));
+        return redirect()->route('tasks.index')->with('success', 'Task assigned successfully.');
+        //Notification::send($user, new MedisoftNotification($details));
+        //return redirect()->back()->with('success','You are now friends');
+    }
 }

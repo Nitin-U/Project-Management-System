@@ -76,8 +76,13 @@ class TaskAssignmentController extends Controller
         //dd($request);
     
         $user->tasks()->save($task);
-    
-        return redirect()->route('tasks.index')->with('success', 'Task assigned successfully.');
+
+        //Send Notification
+        $userName = $user->name;
+        $taskName = $request->input('task_name');
+
+        return redirect()->route('taskNotification',['user'=>$userName,'task'=>$taskName]);
+        //return redirect()->route('tasks.index')->with('success', 'Task assigned successfully.');
     
     }
     
