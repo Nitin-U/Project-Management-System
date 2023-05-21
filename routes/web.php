@@ -36,3 +36,4 @@ Route::resource('resources', ResourceAllocation::class);
 
 Route::get('teamNotification', [App\Http\Controllers\NotificationMgmtController::class, 'teamNotification'])->name('teamNotification');
 Route::get('taskNotification', [App\Http\Controllers\NotificationMgmtController::class, 'taskNotification'])->name('taskNotification');
+Route::get('resourceNotification', [App\Http\Controllers\NotificationMgmtController::class, 'resourceNotification'])->name('resourceNotification');

@@ -74,8 +74,19 @@ class ResourceAllocation extends Controller
         // Create task-resource relationship in the database
         $task->resources()->attach($resource);
         //dd($task);
-        
-        return redirect()->route('resources.create')->with('success', 'Resource allocation saved successfully.');
+
+        //Notification here
+        $team = $task->team; // Fetch the team associated with the task
+        $teamName = $team->team_name;
+        $taskName = $task->task_name;
+        $resourceName = $resource->resource_name;
+
+        $user = $task->user;
+        $userName = $user->name;
+        //dd($userName);
+
+        return redirect()->route('resourceNotification',['team'=>$teamName,'task'=>$taskName, 'resource'=>$resourceName, 'user'=>$userName]);
+        // return redirect()->route('resources.create')->with('success', 'Resource allocation saved successfully.');
 
     }
 
