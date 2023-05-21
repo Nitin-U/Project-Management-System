@@ -33,6 +33,23 @@
                     </div>
                 </form>
 
+                @auth
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Notification
+                        </button>
+                        <ul class="dropdown-menu">
+                            @forelse (Auth::user()->notifications as $notification)
+                                @if (isset($notification->data['line']))
+                                    <li><a class="dropdown-item" href="#">{{ $notification->data['line'] }}</a></li>
+                                @endif
+                            @empty
+                                <li><a class="dropdown-item" href="#">No new notification</a></li>
+                            @endforelse
+                        </ul>
+                    </div>
+                @endauth
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
                 </button>
