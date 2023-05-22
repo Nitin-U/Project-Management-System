@@ -87,7 +87,7 @@ class NotificationMgmtController extends Controller
 
         $details = [
             'greeting' => '',
-            'body' => 'You have been assigned : ' .$resource .', for you task : ' .$task . ' on Team : ' .$team,
+            'body' => $resource .', assigned to your task : ' .$task. '.',
         ];
         //dd($details['body']);
         Notification::send($user, new TeamNotification($details));

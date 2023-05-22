@@ -26,29 +26,29 @@
             <div class="container-fluid mx-5">
                 <a href="{{ '/' }}"><img src="/images/logo.png" alt="" style="width: 35px"></a>
 
-                <form class="d-flex align-items-center">
-                    <div class="input-group">
-                    <input class="form-control d-none d-sm-block" name="search" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-dark d-none d-sm-block" value="submit" id="navbar-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
-                </form>
+                <div class="d-flex align-items-center">
+                    <form class="d-flex">
+                        <div class="input-group">
+                        <input class="form-control d-none d-sm-block" name="search" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-dark d-none d-sm-block" value="submit" id="navbar-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </form>
 
-                @auth
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Notification
-                        </button>
-                        <ul class="dropdown-menu">
-                            @forelse (Auth::user()->notifications as $notification)
-                                @if (isset($notification->data['line']))
-                                    <li><a class="dropdown-item" href="#">{{ $notification->data['line'] }}</a></li>
-                                @endif
-                            @empty
-                                <li><a class="dropdown-item" href="#">No new notification</a></li>
-                            @endforelse
-                        </ul>
-                    </div>
-                @endauth
+                    @auth
+                        <div class="dropdown ms-3">
+                        <i class="fa-regular fa-bell fa-xl dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;"></i>
+                            <ul class="dropdown-menu">
+                                @forelse (Auth::user()->notifications as $notification)
+                                    @if (isset($notification->data['line']))
+                                        <li><a class="dropdown-item" href="#">{{ $notification->data['line'] }}</a></li>
+                                    @endif
+                                @empty
+                                    <li><a class="dropdown-item" href="#">No new notification</a></li>
+                                @endforelse
+                            </ul>
+                        </div>
+                    @endauth
+                </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
