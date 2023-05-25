@@ -43,7 +43,7 @@ class NotificationMgmtController extends Controller
             // dd($details['body']);
             Notification::send($user, new TeamNotification($details));
         }
-        return redirect()->route('teams.index');
+        return redirect()->route('teams.index')->with('success', 'Team created successfully.');
         //Notification::send($user, new MedisoftNotification($details));
         //return redirect()->back()->with('success','You are now friends');
     }
@@ -91,7 +91,7 @@ class NotificationMgmtController extends Controller
         ];
         //dd($details['body']);
         Notification::send($user, new TeamNotification($details));
-        return redirect()->route('resources.create')->with('success', 'Resource allocation saved successfully.');
+        return redirect()->route('resources.create')->with('success', 'Resource allocated successfully.');
         //Notification::send($user, new MedisoftNotification($details));
         //return redirect()->back()->with('success','You are now friends');
     }
