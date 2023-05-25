@@ -61,7 +61,13 @@ class TaskAssignmentController extends Controller
             'user_id' => 'required|exists:team_member,user_id,team_id,' . $request->input('team_id'),
             'task_name' => 'required|string',
             'description' => 'required|string',
-            'due_date' => 'required|date'
+            'due_date' => 'required|date',
+        ],[
+                'team_id' => 'Please select a team',
+                'user_id' => 'Please select a user',
+                'task_name' => 'Please specify a task',
+                'description' => 'Please give the task a description',
+                'due_date' => 'Please give the task a due date',
         ]);
         
     
