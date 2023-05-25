@@ -25,7 +25,7 @@
     }
 </style>
 
-<div class="team_create" style="overflow-x: auto;">
+<div class="team_create" style="overflow-x: hidden;">
     <div class="row flex-nowrap">
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
@@ -122,6 +122,7 @@
                             <img class="card-img d-none" src="https://source.unsplash.com/600x900/?tech,street" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
                             <div class="card-img-overlay d-flex flex-column">
                                 <div class="card-body">
+                                    
                                     <h1 class="card-meta mb-2" style="color:white">{{ $team->team_name }}</h1>
                                     <h4 class="card-title mt-0 "><a class="text-white" style="text-decoration:none" herf="#">Project Name: {{ $team->project_title }}</a></h4>
                                     <!-- <small><i class="far fa-clock"></i> October 15, 2020</small> -->
@@ -131,6 +132,20 @@
                                     @foreach ($team->users as $user)
                                     <li class="list-group-item">{{ $user->name }} - {{ $user->email }}</li>
                                     @endforeach
+
+                                    @can('isPM')
+                                    <div class="row">
+                                        <form action="{{ route('teams.destroy',$team->id) }}" method="POST">
+                                        <div class="col d-flex justify-content-between">
+                                            <a href="{{ route('teams.edit',$team->id) }}" style="color:white"><i class="fs-4 bi bi-pencil-square"></i></a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn" style="color:white"><i class="fs-4 bi bi-trash"></i></button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                    @endcan
+                                    <!-- <a href="{{ route('tasks.show', $team) }}" style="text-decoration:none; color:white;"><button class="btn btn-dark col-12">View Task</button></a> -->
                                 </div>
                             </div>
                             </div>

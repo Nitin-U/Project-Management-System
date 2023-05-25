@@ -96,7 +96,11 @@ class TeamController extends Controller
      */
     public function edit($id)
     {
-        //
+        $team = Team::findOrFail($id);
+        $this->authorize('isPM');
+
+        $users = User::all();
+        return view('teams.edit', compact('team', 'users'));
     }
 
     /**
@@ -106,9 +110,29 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $team_id = $request->input('team_id');
+        $team = Team::findOrFail($team_id);
+        
+        $validateMsg = $request->validate([
+            'project_title' => 'required',
+            'team_name' => 'required',
+            'users' => 'required|array|min:1', // Ensure at least one user is selected
+        ], [
+            'project_title.required' => 'Project Name is required',
+            'team_name.required' => 'Team Name is required',
+        ]);
+    
+        $team->update([
+            'team_name' => $request->input('team_name'),
+            'project_title' => $request->input('project_title')
+        ]);
+    
+        $team->users()->sync($request->input('users'));
+    
+        // Redirect to the team details page or any other appropriate action
+        return redirect()->route('teams.index')->with('success', 'Team Updated Successfully');
     }
 
     /**
@@ -119,6 +143,13 @@ class TeamController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $team = Team::findOrFail($id);
+        $this->authorize('isPM');
+
+        // Delete the team
+        $team->delete();
+
+        // Redirect to the index page or any other appropriate action
+        return redirect()->route('teams.index')->with('success', 'Team Deleted Successfully');
     }
 }
