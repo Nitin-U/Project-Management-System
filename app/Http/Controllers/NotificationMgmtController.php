@@ -91,7 +91,7 @@ class NotificationMgmtController extends Controller
         ];
         //dd($details['body']);
         Notification::send($user, new TeamNotification($details));
-        return redirect()->route('resources.create')->with('success', 'Resource allocated successfully.');
+        return redirect()->route('tasks.index')->with('success', 'Resource allocated successfully.');
         //Notification::send($user, new MedisoftNotification($details));
         //return redirect()->back()->with('success','You are now friends');
     }

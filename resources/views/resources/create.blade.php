@@ -18,7 +18,7 @@ span,
 }
 </style>
 
-<div class="team_create">
+<div class="team_create" style="overflow-x: hidden;">
     <div class="row flex-nowrap">
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
@@ -106,13 +106,18 @@ span,
                                                     @if (isset($teamTasks))                                                <div class="col-12">
                                                                 <label for="resource_id" class="mb-1">Resource Name:<span
                                                                         class="text-danger"></span></label>
-                                                                    <select name="resource_id" class="form-control" id="resource_id">
-                                                                        <option value="">Select a Resource</option>
-                                                                        @foreach ($resources as $resource)
-                                                                                <option value="{{ $resource->id }}" @if(old('resource_id') == $resource->id) selected @endif>{{ $resource->resource_name }}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                        </div> 
+                                                        <div class="input-group">
+                                                            <div class="input-group-text">
+                                                            <i class="bi bi-gear-fill"></i>
+                                                            </div>
+                                                                <select name="resource_id" class="form-control" id="resource_id">
+                                                                    <option value="">Select a Resource</option>
+                                                                    @foreach ($resources as $resource)
+                                                                            <option value="{{ $resource->id }}" @if(old('resource_id') == $resource->id) selected @endif>{{ $resource->resource_name }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                        </div>
+                                                    </div> 
                                                     @endif
 
                                                     <!-- <div class="col-12">
