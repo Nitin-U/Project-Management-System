@@ -131,6 +131,7 @@
 
         <main class="py-0">
             @yield('content')
+            @include('flash-message')
         </main>
     </div>
 
