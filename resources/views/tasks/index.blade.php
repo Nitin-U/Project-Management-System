@@ -81,31 +81,37 @@ span,
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    @can('isPM')
                     <li class="nav-item">
                         <a href="{{ route('teams.create') }}" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Assemble Team</span>
                         </a>
                     </li>
+                    @endcan
                     <li>
                         <a href="{{ route('teams.index') }}" class="nav-link align-middle px-0">
                             <i class="fs-4 bi bi-person-check"></i> <span class="ms-1 d-none d-sm-inline">All
                                 Teams</span>
                         </a>
                     </li>
+                    @can('isPM')
                     <li>
                         <a href="{{ route('tasks.create') }}" class="nav-link px-0 align-middle">
                             <i class="fs-4 bi bi-card-list"></i></i> <span class="ms-1 d-none d-sm-inline">Assign
                                 Tasks</span></a>
                     </li>
+                    @endcan
                     <li>
                         <a href="{{ route('tasks.index') }}" class="nav-link px-0 align-middle">
                         <i class="fs-4 bi bi-list-check"></i> <span class="ms-1 d-none d-sm-inline">All
                                 Tasks</span></a>
                     </li>
+                    @can('isPM')
                     <li>
                         <a href="{{ route('resources.create') }}" class="nav-link px-0 align-middle">
                         <i class="fs-4 bi bi-gear-wide-connected"></i> <span class="ms-1 d-none d-sm-inline">Assign Resources</span></a>
                     </li>
+                    @endcan
                 </ul>
                 <hr>
             </div>
