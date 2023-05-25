@@ -68,7 +68,8 @@ span,
 .bi-person-check,
 .bi-people,
 .bi-list-check,
-.bi-gear-wide-connected {
+.bi-gear-wide-connected,
+.bi-chat-dots {
     color: white;
 }
 .bi-list-check{
@@ -112,33 +113,17 @@ span,
                         <i class="fs-4 bi bi-gear-wide-connected"></i> <span class="ms-1 d-none d-sm-inline">Assign Resources</span></a>
                     </li>
                     @endcan
+                    <li>
+                        <a href="{{ route('resources.create') }}" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi bi-chat-dots"></i> <span class="ms-1 d-none d-sm-inline">Message</span></a>
+                    </li>
                 </ul>
                 <hr>
             </div>
         </div>
         <div class="col">
-            <!-- <h3>Left Sidebar with Submenus</h3> -->
-            <!-- <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-header">Teams</div>
-
-                            <div class="card-body">
-                                <ul class="list-group">
-                                    @foreach ($teams as $team)
-                                        <li class="list-group-item">
-                                            <a href="{{ route('tasks.show', $team) }}">{{ $team->team_name }}</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <div class="col">
-            <!-- <h3>Left Sidebar with Submenus</h3> -->
+            <!-- <div class="col">
+            
             <div class="row row-cols-1 row-cols-md-3 g-4 m-2">
                 @foreach ($teams as $team)
                 <div class="col col-md-4">
@@ -150,12 +135,7 @@ span,
                     </div>
                     <div class="card-body">
                         <p class="card-text text-center"> <a href="{{ route('tasks.show', $team) }}" style="text-decoration:none"> Project Name: {{ $team->project_title }}</a></p>
-                        <!-- <p class="card-text text-center">Team Members: </p>
-                        <ul class="list-group list-group-flush" style="height: 100px; overflow-y: auto;">
-                            @foreach ($team->users as $user)
-                                <li class="list-group-item">{{ $user->name }} - {{ $user->email }}</li>
-                            @endforeach
-                        </ul> -->
+                        
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Last updated 3 mins ago</small>
@@ -163,7 +143,32 @@ span,
                     </div>
                 </div>
                 @endforeach
-            </div>
+            </div> -->
+            <section class="wrapper">
+                <div class="container">
+                    <div class="row">
+                    </div>
+                    <div class="row">
+                        @foreach ($teams as $team)
+                        <div class="col col-md-4 mb-4">
+                            <div class="card text-white card-has-bg click-col" style="background-image:url('https://source.unsplash.com/600x900/?tech,street');">
+                            <img class="card-img d-none" src="https://source.unsplash.com/600x900/?tech,street" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
+                            <div class="card-img-overlay d-flex flex-column">
+                                <div class="card-body">
+                                    <h1 class="card-meta mb-2" style="color:white">{{ $team->team_name }}</h1>
+                                    <h4 class="card-title mt-0 "><a class="text-white" style="text-decoration:none" herf="#">Project Name: {{ $team->project_title }}</a></h4>
+                                    <!-- <small><i class="far fa-clock"></i> October 15, 2020</small> -->
+                                </div>
+                                <div class="card-footer">
+                                <a href="{{ route('tasks.show', $team) }}" style="text-decoration:none; color:white;"><button class="btn btn-dark col-12">View Task</button></a>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
         </div>
         </div>
     </div>

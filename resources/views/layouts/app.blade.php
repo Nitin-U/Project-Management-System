@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/footer.css">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/scss/app.scss'])
 
     <script src="https://kit.fontawesome.com/f6dd6c55d1.js" crossorigin="anonymous"></script>
 </head>
@@ -49,6 +49,7 @@
                                 @endforelse
                             </ul>
                         </div>
+                        
                     @endauth
                 </div>
 

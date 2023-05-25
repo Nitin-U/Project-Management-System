@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 <style>
-    span,.bi-card-list,.bi-person-check,.bi-people,.bi-list-check,.bi-gear-wide-connected{
+    span,.bi-card-list,.bi-person-check,.bi-people,.bi-list-check,.bi-gear-wide-connected,.bi-chat-dots{
         color: white;
     }
 
@@ -60,6 +60,10 @@
                         <i class="fs-4 bi bi-gear-wide-connected"></i> <span class="ms-1 d-none d-sm-inline">Assign Resources</span></a>
                     </li>
                     @endcan
+                    <li>
+                        <a href="{{ route('resources.create') }}" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi bi-chat-dots"></i> <span class="ms-1 d-none d-sm-inline">Message</span></a>
+                    </li>
                 </ul>
                 <hr>
                 <!-- <div class="dropdown pb-4">
@@ -81,7 +85,7 @@
         </div>
         <div class="col">
             <!-- <h3>Left Sidebar with Submenus</h3> -->
-            <div class="row row-cols-1 row-cols-md-3 g-4 m-2">
+            <!-- <div class="row row-cols-1 row-cols-md-3 g-4 m-2">
                 @foreach ($teams as $team)
                 <div class="col col-md-4">
                     <div class="card h-100">
@@ -105,7 +109,39 @@
                     </div>
                 </div>
                 @endforeach
-            </div>
+            </div> -->
+
+            <section class="wrapper">
+                <div class="container">
+                    <div class="row">
+                    </div>
+                    <div class="row">
+                        @foreach ($teams as $team)
+                        <div class="col col-md-4 mb-4">
+                            <div class="card text-white card-has-bg click-col" style="background-image:url('https://source.unsplash.com/600x900/?tech,street');">
+                            <img class="card-img d-none" src="https://source.unsplash.com/600x900/?tech,street" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
+                            <div class="card-img-overlay d-flex flex-column">
+                                <div class="card-body">
+                                    <h1 class="card-meta mb-2" style="color:white">{{ $team->team_name }}</h1>
+                                    <h4 class="card-title mt-0 "><a class="text-white" style="text-decoration:none" herf="#">Project Name: {{ $team->project_title }}</a></h4>
+                                    <!-- <small><i class="far fa-clock"></i> October 15, 2020</small> -->
+                                </div>
+                                <div class="card-footer">
+                                    <h4>Team Members</h4>
+                                    @foreach ($team->users as $user)
+                                    <li class="list-group-item">{{ $user->name }} - {{ $user->email }}</li>
+                                    @endforeach
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+
+
+
         </div>
     </div>
 </div>

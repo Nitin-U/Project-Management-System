@@ -8,7 +8,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <style>
-    span,.bi-card-list,.bi-person-check,.bi-list-check,.bi-gear-wide-connected{
+    span,.bi-card-list,.bi-person-check,.bi-list-check,.bi-gear-wide-connected,.bi-chat-dots{
         color: white;
     }
     .bi-people{
@@ -44,6 +44,10 @@
                     <li>
                         <a href="{{ route('resources.create') }}" class="nav-link px-0 align-middle">
                         <i class="fs-4 bi bi-gear-wide-connected"></i> <span class="ms-1 d-none d-sm-inline">Assign Resources</span></a>
+                    </li>
+                    <li>
+                        <a href="{{ route('resources.create') }}" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi bi-chat-dots"></i> <span class="ms-1 d-none d-sm-inline">Message</span></a>
                     </li>
                     <!-- <li>
                         <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
