@@ -52,6 +52,15 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         // dd($request);
+        $validateMsg = $request -> validate([
+            'project_title' => 'required',
+            'team_name' => 'required',
+            'users' => 'required|array|min:1', // Ensure at least one user is selected
+        ],[
+            'project_title' => 'Project Name is required',
+            'team_name' => 'Team Name is required',
+        ]);
+
         $team = Team::create([
             'team_name' => $request->input('team_name'),
             'project_title' => $request->input('project_title')

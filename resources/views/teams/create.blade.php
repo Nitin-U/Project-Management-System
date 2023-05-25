@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="/css/footer.css">
 <!-- Bi Bootstrap Icon CDN -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <style>
     span,.bi-card-list,.bi-person-check,.bi-people,.bi-list-check,.bi-gear-wide-connected{
@@ -12,7 +13,7 @@
     }
 </style>
 
-<div class="team_create">
+<div class="team_create" style="overflow-x: hidden;">
     <div class="row flex-nowrap">
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
@@ -111,17 +112,23 @@
                                                     <div class="col-12">
                                                         <label class="mb-1">Project Name<span class="text-danger"></span></label>
                                                         <div class="input-group">
-                                                            <div class="input-group-text"><i class="bi bi-card-text"></i></div>
-                                                            <input type="text" name="project_title" id="project_title" class="form-control" placeholder="Enter Project's Name">
+                                                            <div class="input-group-text "><i class="bi bi-card-text"></i></div>
+                                                            <input type="text" name="project_title" id="project_title" class="form-control @error('project_title') is-invalid @enderror" placeholder="Enter Project's Name" value="{{ old('project_title') }}">
                                                         </div>
+                                                        @error('project_title')
+                                                        <i><span class="text-danger ms-1 validation-msg">{{ $message }}</span></i>
+                                                        @enderror
                                                     </div>
 
                                                     <div class="col-12">
                                                         <label class="mb-1">Team Name<span class="text-danger"></span></label>
                                                         <div class="input-group">
                                                             <div class="input-group-text"><i class="bi bi-people-fill"></i></div>
-                                                            <input type="text" name="team_name" id="team_name" class="form-control" placeholder="Enter Team's Name">
+                                                            <input type="text" name="team_name" id="team_name" class="form-control @error('team_name') is-invalid @enderror" placeholder="Enter Team's Name" value="{{ old('team_name') }}">
                                                         </div>
+                                                        @error('team_name')
+                                                        <i><span class="text-danger ms-1 validation-msg">{{ $message }}</span></i>
+                                                        @enderror
                                                     </div>
 
                                                     <div class="container mt-5 px-2">
@@ -131,7 +138,7 @@
                                                         <div class="position-relative">
                                                             <span class="position-absolute search"></span>
                                                             <div class="d-flex">
-                                                            <input class="form-control w-100" placeholder="Search by name . . ."><i class="fa-solid fa-magnifying-glass align-self-center ms-2"></i>
+                                                            <input id="searchInput" class="form-control w-100 " placeholder="Search by name . . .">
                                                             </div>
                                                         </div>
                                                         
@@ -141,7 +148,7 @@
                                                         
                                                     <thead>
                                                         <tr class="bg-light">
-                                                        <th scope="col" width="5%"><input class="form-check-input" type="checkbox"></th>
+                                                        <th scope="col" width="5%"></th>
                                                         <th scope="col" width="5%">#</th>
                                                         <th scope="col" width="20%">Name</th>
                                                         <th scope="col" width="10%">Email</th>
@@ -152,7 +159,7 @@
                                                 <tbody>
                                                     @foreach($users as $user)
                                                         <tr>
-                                                        <th scope="row"><input class="form-check-input" type="checkbox" name="users[]" value="{{ $user->id }}"></th>
+                                                        <th scope="row"><input class="form-check-input @error('users') is-invalid @enderror" type="checkbox" name="users[]" value="{{ $user->id }}"></th>
                                                         <td>{{ $user->id }}</td>
                                                         <td>{{ $user->name }}</td>
                                                         <td>{{ $user->email }}</td>
@@ -162,6 +169,9 @@
                                                     @endforeach
                                                 </tbody>
                                                 </table>
+                                                @error('users')
+                                                <i><div class="text-danger">{{ $message }}</div></i>
+                                                @enderror
                                                 
                                                 </div>
                                                     
@@ -191,5 +201,25 @@
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function() {
+  // Capture the keyup event on the search input field
+  $('#searchInput').keyup(function() {
+    var searchText = $(this).val().toLowerCase(); // Get the search text and convert it to lowercase
+    
+    // Loop through each table row
+    $('tbody tr').each(function() {
+      var name = $(this).find('td:nth-child(3)').text().toLowerCase(); // Get the name column text and convert it to lowercase
+      
+      // Check if the name contains the search text
+      if (name.includes(searchText)) {
+        $(this).show(); // Show the row if the name matches the search text
+      } else {
+        $(this).hide(); // Hide the row if the name doesn't match the search text
+      }
+    });
+  });
+});
+</script>
 
 @endsection
