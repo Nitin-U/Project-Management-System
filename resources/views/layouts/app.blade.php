@@ -13,6 +13,8 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+
+    <link rel="stylesheet" href="/css/global.css">
     <link rel="stylesheet" href="css/footer.css">
 
     <!-- Scripts -->
@@ -27,12 +29,12 @@
                 <a href="{{ '/' }}"><img src="/images/logo.png" alt="" style="width: 35px"></a>
 
                 <div class="d-flex align-items-center">
-                    <form class="d-flex">
+                    <!-- <form class="d-flex">
                         <div class="input-group">
                         <input class="form-control d-none d-sm-block" name="search" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-dark d-none d-sm-block" value="submit" id="navbar-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
-                    </form>
+                    </form> -->
 
                     @auth
                         <div class="dropdown ms-3">
@@ -63,12 +65,12 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
-                    <form class="d-flex align-items-center">
+                    <!-- <form class="d-flex align-items-center">
                         <div class="input-group">
                         <input class="form-control d-block d-sm-none" name="search" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-dark d-block d-sm-none" value="submit" id="navbar-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
-                    </form>
+                    </form> -->
 
                         @guest
                             @if (Route::has('login'))
@@ -77,11 +79,11 @@
                                 </li>
                             @endif
 
-                            @if (Route::has('register'))
+                            <!-- @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif
+                            @endif -->
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -20,6 +20,9 @@
         bottom: 0;
         background: rgba(0, 0, 0, 0.5);
     }
+    .bi-person-check{
+        color: #B61C1C !important;
+    }
 </style>
 
 <div class="team_create" style="overflow-x: auto;">

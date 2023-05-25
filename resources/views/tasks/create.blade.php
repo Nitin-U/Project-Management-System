@@ -15,6 +15,10 @@ span,
 .bi-gear-wide-connected {
     color: white;
 }
+
+.bi-card-list{
+        color: #B61C1C !important;
+    }
 </style>
 
 <div class="team_create" style="overflow-x: hidden;">

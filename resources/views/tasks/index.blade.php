@@ -71,6 +71,9 @@ span,
 .bi-gear-wide-connected {
     color: white;
 }
+.bi-list-check{
+        color: #B61C1C !important;
+    }
 </style>
 
 <div class="team_create">

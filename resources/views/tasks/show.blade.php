@@ -73,6 +73,9 @@
                             <h5 class="media-heading mb-0 mt-0">{{ $member->name }}</h5><span class="badge bg-secondary">{{ $member->role }}</span>
                         </div>
                     </div>
+                    @if ($member->tasks->where('team_id', $team->id)->isEmpty())
+                        <h4 class="m-b-20 mt-2 text-center">Task not assigned yet.</h4>
+                    @else
                     @foreach ($member->tasks->where('team_id', $team->id) as $task)
                     <h4 class="m-b-20 mt-2">
                         {{ $task->task_name }}
@@ -105,9 +108,10 @@
                         </div>
                     </div>
                     <div class="d-grid gap-2 mt-2 mb-2">
-                        <button class="btn btn-secondary" type="button">Button</button>
+                        <button class="btn btn-secondary" type="button">Submit</button>
                     </div>
                     @endforeach
+                    @endif
                     
                 </div>
             </div>

@@ -1,0 +1,21 @@
+button.btn.btn-dark{
+    background-color: #B61C1C !important;
+    border: #B61C1C;
+}
+
+button.btn.btn-dark:hover{
+    background-color: #000 !important;
+    border: #000;
+    transition: .3s;
+}
+
+button.btn.btn-secondary{
+    background-color: #B61C1C !important;
+    border: #B61C1C;
+}
+
+button.btn.btn-secondary:hover{
+    background-color: #000 !important;
+    border: #000;
+    transition: .3s;
+}

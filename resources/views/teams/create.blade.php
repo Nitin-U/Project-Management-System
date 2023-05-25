@@ -8,8 +8,11 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <style>
-    span,.bi-card-list,.bi-person-check,.bi-people,.bi-list-check,.bi-gear-wide-connected{
+    span,.bi-card-list,.bi-person-check,.bi-list-check,.bi-gear-wide-connected{
         color: white;
+    }
+    .bi-people{
+        color: #B61C1C;
     }
 </style>
 

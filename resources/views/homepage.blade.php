@@ -23,7 +23,7 @@
                                             <input type="email" name="email" class="form-control"
                                                 placeholder="Enter your email">
                                             <span class="input-group-btn">
-                                                <button class="btn btn-theme" type="submit">Subscribe</button>
+                                                <button class="btn btn-dark" type="submit">Subscribe</button>
                                             </span>
                                         </div>
                                     </form>
