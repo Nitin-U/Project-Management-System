@@ -107,9 +107,16 @@
                         <!-- <hr> -->
                         </div>
                     </div>
-                    <div class="d-grid gap-2 mt-2 mb-2">
-                        <button class="btn btn-secondary" type="button">Submit</button>
-                    </div>
+                    @can('isPM')
+                    <form action="{{ route('tasks.destroy',$task->id) }}" method="POST">
+                        <div class="d-grid gap-2 mt-2 mb-2">
+                            <a href="{{ route('tasks.edit',$task->id) }}"><button class="col-12 btn btn-secondary" type="button">Edit</button></a>
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-secondary" type="submit">Delete</button>
+                        </div>
+                    </form>
+                    @endcan
                     @endforeach
                     @endif
                     

@@ -133,7 +133,13 @@ class TaskAssignmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $this->authorize('isPM');
+
+        $teams = Team::all();
+        $users = User::all();
+
+        return view('tasks.edit', compact('task', 'teams', 'users'));
     }
 
     /**
@@ -145,7 +151,26 @@ class TaskAssignmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $this->authorize('isPM');
+
+        $request->validate([
+            'task_name' => 'required|string',
+            'description' => 'required|string',
+            'due_date' => 'required|date',
+        ],[
+                'task_name' => 'Please specify a task',
+                'description' => 'Please give the task a description',
+                'due_date' => 'Please give the task a due date',
+        ]);
+
+        $task->task_name = $request->input('task_name');
+        $task->description = $request->input('description');
+        $task->due_date = $request->input('due_date');
+        $task->team_id = $request->input('team_id');
+        $task->save();
+
+        return redirect()->route('tasks.show', $task->team_id)->with('success', 'Task Updated Successfully');
     }
 
     /**
@@ -156,6 +181,12 @@ class TaskAssignmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $this->authorize('isPM');
+
+        // Delete the task
+        $task->delete();
+
+        return redirect()->route('tasks.show', $task->team_id)->with('success', 'Task deleted successfully');
     }
 }
