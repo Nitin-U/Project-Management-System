@@ -14,6 +14,18 @@
   background-position: center center;
 }
 
+.bg-image-reset {
+  background-image: url('https://images.pexels.com/photos/5703527/pexels-photo-5703527.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background-size: cover;
+  background-position: center center;
+}
+
+.bg-image-email {
+  background-image: url('https://images.pexels.com/photos/5428829/pexels-photo-5428829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background-size: cover;
+  background-position: center center;
+}
+
 .custom_forgetpasslink a{
     color: #000;
 }

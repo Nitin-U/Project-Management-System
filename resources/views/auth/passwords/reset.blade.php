@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<link rel="stylesheet" href="/css/footer.css">
+<!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -60,6 +61,70 @@
                 </div>
             </div>
         </div>
+    </div>
+</div> -->
+
+<link rel="stylesheet" href="/css/loginRegister.css">
+<div class="container-fluid mb-5">
+    <div class="row no-gutter">
+        <!-- The image half -->
+        <div class="col-md-6 d-none d-md-flex bg-image-reset"></div>
+
+
+        <!-- The content half -->
+        <div class="col-md-6 bg-light">
+            <div class="login d-flex align-items-center py-5">
+
+                <!-- Demo content-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-xl-7 mx-auto">
+                            <h3 class="display-4">{{ __('Reset Password') }}</h3>
+                            <p class="text-muted mb-4">Reset your password here</p>
+                            <form method="POST" action="{{ route('password.update') }}">
+                                @csrf
+                                <input type="hidden" name="token" value="{{ $token }}">
+
+
+                                <div class="form-group mb-3">
+                                    <input id="email" type="email" placeholder="Email address" autofocus=""
+                                        class="p-2 form-control rounded-pill border-0 shadow-sm px-4 @error('email') is-invalid @enderror"
+                                        name="email" value="{{ $email ?? old('email') }}" autocomplete="email" autofocus>
+                                    @error('email')
+                                    <span class="ms-2 invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <input id="password-confirm" type="password" placeholder="Password" autofocus=""
+                                        class="p-2 form-control rounded-pill border-0 shadow-sm px-4 @error('password') is-invalid @enderror"
+                                        name="password" autocomplete="new-password" autofocus>
+                                    @error('password')
+                                    <span class="ms-2 invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <input id="password" type="password" placeholder="Confirm Password" autofocus=""
+                                        class="p-2 form-control rounded-pill border-0 shadow-sm px-4 @error('password') is-invalid @enderror"
+                                        name="password_confirmation" autocomplete="new-password" autofocus>
+                                    
+                                </div>
+                            
+                                <button type="submit"
+                                    class="btn btn-dark btn-block text-uppercase mb-2 w-100 rounded-pill shadow-sm p-2">{{ __('Reset Password') }}</button>
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- End -->
+
+            </div>
+        </div><!-- End -->
+
     </div>
 </div>
 @endsection
